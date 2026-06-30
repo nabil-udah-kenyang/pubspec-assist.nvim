@@ -171,6 +171,18 @@ If something does not work, run:
 
 Make sure `curl`, `flutter`, and `telescope.nvim` are detected correctly.
 
+## Demo
+
+<p align="center">
+  <video src="./assets/video/demo.mp4" controls width="900">
+    Your browser does not support the video tag.
+  </video>
+</p>
+
+<p align="center">
+  <a href="./assets/video/demo.mp4">Watch the demo video</a>
+</p>
+
 ## Screenshots
 
 ### Command Completion
