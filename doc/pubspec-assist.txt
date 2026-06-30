@@ -1,0 +1,99 @@
+*pubspec-assist.nvim*         Async pub.dev package manager for Neovim
+
+==============================================================================
+CONTENTS                                             *pubspec-assist-contents*
+
+1. Introduction                         |pubspec-assist-introduction|
+2. Installation                         |pubspec-assist-installation|
+3. Configuration                        |pubspec-assist-configuration|
+4. Commands                             |pubspec-assist-commands|
+5. Telescope Keymaps                    |pubspec-assist-keymaps|
+6. Health                               |pubspec-assist-health|
+
+==============================================================================
+INTRODUCTION                                     *pubspec-assist-introduction*
+
+pubspec-assist.nvim provides a Telescope-powered pub.dev workflow for Flutter
+and Dart projects. Searches are asynchronous, debounced, cached, and cancelable.
+
+==============================================================================
+INSTALLATION                                     *pubspec-assist-installation*
+
+lazy.nvim example:
+>
+  {
+    "nabil/pubspec-assist.nvim",
+    dependencies = { "nvim-telescope/telescope.nvim" },
+    config = function()
+      require("pubspec-assist").setup()
+    end,
+  }
+<
+
+Requirements:
+- Neovim >= 0.10
+- telescope.nvim
+- curl
+- flutter
+
+==============================================================================
+CONFIGURATION                                   *pubspec-assist-configuration*
+>
+  require("pubspec-assist").setup({
+    debounce_ms = 250,
+    cache_ttl = 300,
+    max_results = 20,
+    notify = true,
+  })
+<
+
+==============================================================================
+COMMANDS                                             *pubspec-assist-commands*
+
+                                                        *:PubspecSearch*
+:PubspecSearch
+        Open live pub.dev search in Telescope.
+
+                                                     *:PubspecInstalled*
+:PubspecInstalled
+        Show dependencies from the nearest pubspec.yaml.
+
+                                                       *:PubspecProject*
+:PubspecProject
+        Open the project package manager.
+
+                                                      *:PubspecOutdated*
+:PubspecOutdated
+        Run `flutter pub outdated --json` and display results in Telescope.
+
+                                                          *:PubspecInfo*
+:PubspecInfo {package}
+        Open package details in a floating window.
+
+==============================================================================
+TELESCOPE KEYMAPS                                    *pubspec-assist-keymaps*
+
+<CR>      Install package in search mode, open details in project mode.
+<C-p>     Open package page / README on pub.dev.
+<C-l>     Open changelog.
+<C-v>     Show versions.
+<C-d>     Show dependencies.
+<C-r>     Remove package.
+<C-u>     Upgrade package.
+<C-o>     Open pub.dev page.
+<C-y>     Copy package name.
+<C-f>     Save favorite.
+i         Open package information.
+u         Upgrade package.
+r         Remove package.
+o         Open pub.dev page.
+
+==============================================================================
+HEALTH                                                 *pubspec-assist-health*
+
+Run:
+>
+  :checkhealth pubspec-assist
+<
+
+vim:tw=78:ts=8:ft=help:norl:
